@@ -15,7 +15,15 @@
       which defines the package depdencies of that project.
      -->
     <BaseIntermediateOutputPath>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), 'EnlistmentRoot.marker'))\obj\LegacyDependencies</BaseIntermediateOutputPath>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
   <!-- This must be a relative or absolute path, not computed, so that dotnet restore on Linux finds this correctly. -->
   <Import Project="$(MSBuildThisFileDirectory)..\..\build\Common.props" />
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
